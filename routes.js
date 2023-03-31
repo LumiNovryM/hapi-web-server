@@ -3,6 +3,7 @@ const routes = [
         method: 'GET',
         path: '/',
         handler: (request, h) => {
+            const { name, location } = request.query
             return 'Homepage';
         },
     },
@@ -32,6 +33,12 @@ const routes = [
         path: '/hello/{name?}',
         handler: (request, h) => {
            const { name = "stranger" } = request.params;
+            const { lang } = request.query;
+
+            if(lang === 'id'){
+                return `Hai,${name}`;
+            }
+
            return `Hello, ${name}!`;
        },
     },
@@ -44,4 +51,4 @@ const routes = [
     },
 ];
  
-module.exports = routes;2
+module.exports = routes;
